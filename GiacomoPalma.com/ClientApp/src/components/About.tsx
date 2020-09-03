@@ -2,18 +2,18 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ApplicationState } from '../store';
-import * as CounterStore from '../store/Counter';
+import * as AboutStore from '../store/About';
 
-type CounterProps =
-    CounterStore.CounterState &
-    typeof CounterStore.actionCreators &
+type AboutProps =
+    AboutStore.AboutState &
+    typeof AboutStore.actionCreators &
     RouteComponentProps<{}>;
 
-class Counter extends React.PureComponent<CounterProps> {
+class About extends React.PureComponent<AboutProps> {
     public render() {
         return (
             <React.Fragment>
-                <h1>Counter</h1>
+                <h1>About</h1>
 
                 <p>This is a simple example of a React component.</p>
 
@@ -31,5 +31,5 @@ class Counter extends React.PureComponent<CounterProps> {
 
 export default connect(
     (state: ApplicationState) => state.counter,
-    CounterStore.actionCreators
-)(Counter);
+    AboutStore.actionCreators
+)(About);

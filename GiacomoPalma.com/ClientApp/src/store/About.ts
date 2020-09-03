@@ -3,7 +3,7 @@ import { Action, Reducer } from 'redux';
 // -----------------
 // STATE - This defines the type of data maintained in the Redux store.
 
-export interface CounterState {
+export interface AboutState {
     count: number;
 }
 
@@ -31,7 +31,7 @@ export const actionCreators = {
 // ----------------
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
 
-export const reducer: Reducer<CounterState> = (state: CounterState | undefined, incomingAction: Action): CounterState => {
+export const reducer: Reducer<AboutState> = (state: AboutState | undefined, incomingAction: Action): AboutState => {
     if (state === undefined) {
         return { count: 0 };
     }

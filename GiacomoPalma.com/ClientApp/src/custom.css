@@ -1,11 +1,26 @@
 /* Provide sufficient contrast against white background */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 body {
   overflow: hidden;
   height:100vh;
   width:100vw;
 }
+
 #home-canvas {
   cursor:grab;
+}
+
+#home-canvas:active{
+  cursor:grabbing;
 }
 
 button:focus {

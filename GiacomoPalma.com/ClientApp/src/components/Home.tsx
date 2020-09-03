@@ -224,17 +224,17 @@ class Home extends React.PureComponent<{}, HomeState> {
             let geometry = this.particles.geometry as THREE.BufferGeometry;
             let attributes = geometry.attributes;
 
-            for (let i = 0; i < attributes.position.array.length; i++) {
-                let velocity = this.particlesVelocity[i];
-                // @ts-ignore
-                attributes.position.array[i * 3 + 2] += velocity.z * 0.01;
-                // @ts-ignore
-                attributes.position.array[i * 3 + 1] += velocity.y * 0.01;
-                // @ts-ignore
-                attributes.position.array[i * 3] += velocity.x * 0.01;
-            }
-
-            attributes.position.needsUpdate = true;
+            // for (let i = 0; i < attributes.position.array.length; i++) {
+            //     let velocity = this.particlesVelocity[i];
+            //     // @ts-ignore
+            //     attributes.position.array[i * 3 + 2] += velocity.z * 0.01;
+            //     // @ts-ignore
+            //     attributes.position.array[i * 3 + 1] += velocity.y * 0.01;
+            //     // @ts-ignore
+            //     attributes.position.array[i * 3] += velocity.x * 0.01;
+            // }
+            //
+            // attributes.position.needsUpdate = true;
         }
     }
     

@@ -1,18 +1,47 @@
+/** FONTS **/
+@font-face {
+  font-family: 'Cairo';
+  src: url("./fonts/Cairo-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url("/fonts/Cairo-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Catamaran';
+  src: url("./fonts/Catamaran-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Catamaran';
+  src: url("./fonts/Catamaran-Bold.ttf");
+  font-weight: bold;
+}
+
 /* Provide sufficient contrast against white background */
 html {
-  font-size: 14px;
+  font-size: 16px;
+  /* general font here */
+}
+
+html, body{
+  height:100%;
+  width:100%;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 body {
   overflow: hidden;
-  height:100vh;
-  width:100vw;
 }
 
 #home-canvas {
@@ -21,6 +50,29 @@ body {
 
 #home-canvas:active{
   cursor:grabbing;
+}
+
+h1 {
+  font-family: 'Catamaran', serif;
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+
+.intro {
+  font-family: 'Cairo', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+blockquote {
+  margin-bottom:5px;
+  font-style: italic;
+  font-size:20px;
+}
+p {
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 button:focus {

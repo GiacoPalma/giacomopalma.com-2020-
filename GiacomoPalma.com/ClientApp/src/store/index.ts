@@ -1,9 +1,7 @@
 import * as WeatherForecasts from './WeatherForecasts';
-import * as About from './About';
 
 // The top-level state object
 export interface ApplicationState {
-    counter: About.AboutState | undefined;
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
 }
 
@@ -11,7 +9,6 @@ export interface ApplicationState {
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    counter: About.reducer,
     weatherForecasts: WeatherForecasts.reducer
 };
 

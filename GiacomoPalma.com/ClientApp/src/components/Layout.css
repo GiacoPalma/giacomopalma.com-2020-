@@ -2,6 +2,7 @@
     0% {
         width: 250px;
         min-height: 250px;
+        overflow: hidden;
         height: 250px;
         border-radius: 125px;
         transform: translateX(50vw) scale(0, 0);
@@ -69,6 +70,7 @@
     background-color: #FFFBE2;
     min-height: 95vh;
     transition: all 0.4s;
+    padding:40px;
 }
 
 .page-container.initial-hide {

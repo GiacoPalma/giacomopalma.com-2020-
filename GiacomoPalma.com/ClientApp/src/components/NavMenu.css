@@ -1,4 +1,42 @@
-﻿a.navbar-brand {
+﻿@keyframes openMenu {
+    0% {
+        width: 0px;
+        height: 0px;
+        border-radius: 0px 0 0px 0px;
+    }
+    85% {
+        width: 265px;
+        height: 265px;
+        border-radius: 130px 0 130px 130px;
+    }
+    100% {
+        width: 250px;
+        height: 250px;
+        border-radius: 125px 0 125px 125px;
+    }
+}
+
+@keyframes closeMenu {
+    0% {
+        width: 250px;
+        height: 250px;
+        border-radius: 130px 0 130px 130px;
+    }
+    
+    15% {
+        width: 265px;
+        height: 265px;
+        border-radius: 130px 0 130px 130px;
+    }
+    
+    100% {
+        width: 0px;
+        height: 0px;
+        border-radius: 0px 0 0px 0px;
+    }
+}
+
+a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
@@ -9,6 +47,7 @@
     right: -30px;
     z-index: 1;
     position: absolute;
+    overflow:hidden;
     transition: all 0.5s ease-in-out;
 }
 .navbar-collapse ul{
@@ -16,15 +55,17 @@
 }
 
 .navbar-collapse[aria-expanded=false]{
-    width: 0px;
-    height: 0px;
-    border-radius: 0px 0 0px 0px;
+    animation-name: closeMenu;
+    animation-duration: 0.5s;
+    animation-timing-function:ease-in;
+    animation-fill-mode: forwards;
 }
 
 .navbar-collapse[aria-expanded=true]{
-    width: 250px;
-    height: 250px;
-    border-radius: 125px 0 125px 125px;
+    animation-name: openMenu;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
 }
 
 .navbar {

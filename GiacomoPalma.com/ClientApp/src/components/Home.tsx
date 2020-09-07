@@ -223,7 +223,7 @@ class Home extends React.PureComponent<{}, HomeState> {
         if (this.particles !== undefined) {
             let geometry = this.particles.geometry as THREE.BufferGeometry;
             let attributes = geometry.attributes;
-
+            
             // for (let i = 0; i < attributes.position.array.length; i++) {
             //     let velocity = this.particlesVelocity[i];
             //     // @ts-ignore

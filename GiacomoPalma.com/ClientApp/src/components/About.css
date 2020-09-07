@@ -1,0 +1,15 @@
+﻿#about-canvas {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: inline-block;
+    padding: 0;
+}
+
+#about-canvas:focus{
+    outline: none;
+}
+
+#about-canvas canvas:focus{
+    outline: none;
+}

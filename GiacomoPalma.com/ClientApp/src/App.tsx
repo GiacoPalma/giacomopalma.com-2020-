@@ -8,6 +8,7 @@ import './custom.css'
 import Projects from "./components/Projects";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
+import AdminLogin from "./components/admin/AdminLogin";
 
 export default () => (
     <Layout>
@@ -16,6 +17,7 @@ export default () => (
         <Route path='/projects' component={ Projects } key="projects"/>
         <Route path='/blog' component={ Blog } key="blog"/>
         <Route path='/contact' component={ Contact } key="contact"/>
+        <Route path='/admin' component={ AdminLogin } key="adminlogin"/>
         <Route path='/fetch-data/:startDateIndex?' component={FetchData} key="fetch"/>
     </Layout>
 );

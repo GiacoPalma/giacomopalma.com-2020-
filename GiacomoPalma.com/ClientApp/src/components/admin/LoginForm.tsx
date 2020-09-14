@@ -18,11 +18,6 @@ type LoginFormProps =
 
 class LoginForm extends React.PureComponent<LoginFormProps, LoginFormState> {
     
-    public state: LoginFormState = {
-        username: "",
-        password: ""
-    }
-    
     public submitForm = (e:FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
         console.log("submitting form");
@@ -39,28 +34,25 @@ class LoginForm extends React.PureComponent<LoginFormProps, LoginFormState> {
         let target = e.target as HTMLInputElement;
         this.setState({password: target.value});
     }
-    
+
     public render(){
         return (
             <form onSubmit={this.submitForm}>
                 <label>Is authorized: {this.props.isAuthorized ? "logged in!" : "not logged in"}</label>
                 <br/>
                 <label htmlFor="username">Username:</label>
-                <input type="text" id="username" onChange={this.onUsernameChange} placeholder="username" value={this.state.username}/>
+                <input type="text" id="username" onChange={this.onUsernameChange} placeholder="username"/>
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" onChange={this.onPasswordChange} placeholder="password" value={this.state.password}/>
-                <button type="submit">Log in</button>
+                <input type="password" id="password" onChange={this.onPasswordChange} placeholder="password"/>
+                <button type="submit" className="btn btn-primary">Log in</button>
             </form>
         )
     }
 }
 
-const mapStateToProps = (state: ApplicationState) => {
-    return {
-        isAuthorized: state.authorized ? state.authorized.isAuthorized : false,
-        authorization: state.authorized? state.authorized.authorization : {}
-    }
-}
+const mapStateToProps = (state: ApplicationState) => ({
+    isAuthorized: state.authorization ? state.authorization.isAuthorized : false
+})
 
 export default connect(
     mapStateToProps,

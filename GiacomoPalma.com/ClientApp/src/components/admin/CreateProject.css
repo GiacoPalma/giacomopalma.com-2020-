@@ -1,0 +1,23 @@
+﻿.create-project-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width:50%;
+}
+
+.create-project-form button {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    font-weight: 600;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: green;
+    font-weight: 600;
+}

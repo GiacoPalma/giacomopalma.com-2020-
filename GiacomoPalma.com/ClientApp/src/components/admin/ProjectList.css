@@ -1,0 +1,27 @@
+﻿.project-thumbnail {
+    width:200px;
+    height:150px;
+}
+
+.project-thumbnail img {
+    width:100%;
+    height:100%;
+}
+
+.project-item-admin {
+    margin: 10px;
+    transition: all 0.3s ease-in;
+}
+.project-item-admin:hover{
+    cursor: pointer;
+    transform:scale(1.1,1.1);
+}
+
+.project-list-admin {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}

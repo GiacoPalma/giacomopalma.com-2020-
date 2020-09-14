@@ -1,18 +1,18 @@
-import * as WeatherForecasts from './WeatherForecasts';
 import * as Authorization from "./Authorization";
+import * as Projects from "./Projects";
 
 // The top-level state object
 export interface ApplicationState {
-    weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
-    authorized: Authorization.AuthorizationState | undefined;
+    projects: Projects.ProjectsState | undefined;
+    authorization: Authorization.AuthorizationState | undefined;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    weatherForecasts: WeatherForecasts.reducer,
-    authorization: Authorization.reducer
+    authorization: Authorization.reducer,
+    projects: Projects.reducer
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

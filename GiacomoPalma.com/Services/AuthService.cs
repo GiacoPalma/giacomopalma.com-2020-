@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using CryptoHelper;
 using GiacomoPalma.com.ViewModels;
@@ -19,7 +20,7 @@ namespace GiacomoPalma.com.Services
 			_jwtLifespan = jwtLifespan;
 		}
 		
-		public AuthData GetAuthData(int id)
+		public AuthData GetAuthData(int id, string refreshToken)
 		{
 			var expirationTime = DateTime.UtcNow.AddSeconds(_jwtLifespan);
 			var tokenDescriptor = new SecurityTokenDescriptor
@@ -41,8 +42,16 @@ namespace GiacomoPalma.com.Services
 			{
 				Token = token,
 				TokenExpirationTime = ((DateTimeOffset) expirationTime).ToUnixTimeSeconds(),
-				Id = id,
+				RefreshToken = refreshToken,
 			};
+		}
+
+		public string GenerateRefreshToken()
+		{
+			var randomNumber = new byte[32];
+			using var rng = RandomNumberGenerator.Create();
+			rng.GetBytes(randomNumber);
+			return Convert.ToBase64String(randomNumber);
 		}
 
 		public string HashPassword(string password)

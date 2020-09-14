@@ -1,3 +1,26 @@
+:root{
+  --text-color: #333;
+  --background-color: #faf4ff;
+  --primary-color-lighter: #DFF8FB;
+  --primary-color-light: #ABE5EB;
+  --primary-color: #f3c623;
+  --primary-color-dark: #50ACB5;
+  --primary-color-darker: #308D95;
+  
+  --secondary-color-lighter: #FFFBE2;
+  --secondary-color-light: #FFF4B9;
+  --secondary-color: #10375c;
+  --secondary-color-dark: #FFE96F;
+  --secondary-color-daker: #F5DC4D;
+  
+  --accent-color-lighter: #FDE0F0;
+  --accent-color-light: #F5B1D7;
+  --accent-color: #844685;
+  --accent-color-dark: #DA5FA4;
+  --accent-color-darker: #C53E8A;
+}
+
+
 /** FONTS **/
 @font-face {
   font-family: 'Cairo';
@@ -84,21 +107,22 @@ code {
 }
 
 .btn-primary {
-  color: #8de7f0;
-  background: #fff1e7;
+  color: var(--background-color);
+  background: var(--primary-color);
   font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
   border: none;
   outline: none;
 }
 
 .btn-primary:hover{
-  color: #8de7f0;
-  background: #fff1e7;
+  color: var(--background-color);
+  background: var(--secondary-color);
   cursor: pointer;
+  transform: translateY(-3px);
   -webkit-box-shadow: 0px 8px 20px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 8px 20px -6px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 8px 20px -6px rgba(0, 0, 0, 0.75);

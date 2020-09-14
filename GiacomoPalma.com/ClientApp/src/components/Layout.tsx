@@ -7,14 +7,29 @@ import {useEffect, useState} from "react";
 
 export default (props: { children?: React.ReactNode }) => {
         let match = useRouteMatch("/");
+        let adminMatch = useRouteMatch("/admin");
         let location = useLocation();
         let isHomeMatch = match == undefined ? false : match.isExact;
+        let isAdminMatch = adminMatch != undefined;
         const [initialLoad, setInitialLoad] = useState(true);
         const [animationClass, setAnimationClass] = useState("page-container hide");
         const [isHome, setIsHome] = useState(isHomeMatch);
         
         useEffect(() => {
                 let className;
+                console.log(isAdminMatch);
+                
+                if(isAdminMatch)
+                {
+                        className = "page-container tab-hide";
+                        setAnimationClass(className);
+                        setTimeout(() => {
+                                let className = "page-container tab-show";
+                                setAnimationClass(className);
+                        }, 200);
+                        return;
+                }
+                
                 if(initialLoad)
                 {
                         className = isHomeMatch ? "page-container initial-hide" : "page-container";

@@ -28,7 +28,7 @@ namespace GiacomoPalma.com
 		public void ConfigureServices(IServiceCollection services)
 		{
 
-			services.AddDbContext<BlogContext>(options =>
+			services.AddDbContext<DataContext>(options =>
 				options.UseMySQL(Configuration.GetConnectionString("BlogDatabase")));
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -44,7 +44,7 @@ namespace GiacomoPalma.com
 						IssuerSigningKey = new SymmetricSecurityKey(
 							Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecretKey")))
 					};
-				});
+				}).AddCookie();
 
 			services.AddSingleton<IAuthService>(
 				new AuthService(

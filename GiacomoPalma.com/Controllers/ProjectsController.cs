@@ -87,21 +87,56 @@ namespace GiacomoPalma.com.Controllers
 		}
 
 		[HttpPut("{id}")]
-		public ActionResult<Project> Update([FromBody] ProjectViewModel project)
+		public async Task<ActionResult<Project>> Update(int id)
 		{
-			if (!ModelState.IsValid) return BadRequest(ModelState);
+			if (!HttpContext.Request.HasFormContentType)
+				return BadRequest("no multipart form sent!");
 
-			var existingProject = _dataContext.Projects.FirstOrDefault(p => p.Name == project.Name);
+			Request.Form.TryGetValue("name", out var name);
+			Request.Form.TryGetValue("description", out var description);
+			Request.Form.TryGetValue("url", out var url);
+
+			if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(url))
+				return BadRequest("Missing name, description or url");
+
+			var existingProject = _dataContext.Projects.FirstOrDefault(p => p.Id == id);
 			if (existingProject == null)
 			{
 				return BadRequest("Project does not exist");
 			}
 
-			existingProject.Name = project.Name;
-			existingProject.Description = project.Description;
-			existingProject.Thumbnail = project.Thumbnail;
-			existingProject.Url = project.Url;
-			_dataContext.SaveChanges();
+			if (HttpContext.Request.Form.Files.Any())
+			{
+				var dir = Directory.GetCurrentDirectory();
+				var uploadDir = _configuration.GetValue<string>("UploadDirectory");
+				var thumbnailBasePath = _configuration.GetValue<string>("ProjectImagesBasePath");
+				var root = Path.Combine(dir, uploadDir);
+				if (string.IsNullOrEmpty(root))
+				{
+					return BadRequest($"Could not find upload directory: {root}");
+				}
+
+				var file = Request.Form.Files[0];
+				await using var fStream = new FileStream(Path.Combine(root, file.FileName), FileMode.Create,
+					FileAccess.Write, FileShare.None);
+				await file.CopyToAsync(fStream);
+
+				existingProject.Thumbnail = Path.Combine(thumbnailBasePath, file.FileName);
+			}
+			
+			existingProject.Name = name;
+			existingProject.Description = description;
+			existingProject.Url = url;
+
+			try
+			{
+				await _dataContext.SaveChangesAsync();
+			}
+			catch (DbUpdateException e)
+			{
+				Console.WriteLine(e.Message);
+				return BadRequest("Error creating project");
+			}
 
 			return existingProject;
 		}

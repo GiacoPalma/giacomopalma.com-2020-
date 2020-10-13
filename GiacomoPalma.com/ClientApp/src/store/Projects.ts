@@ -78,6 +78,18 @@ export const actionCreators = {
         
         dispatch({ type: REQUEST_PROJECTS });
     },
+    updateProject: (project: FormData): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        Requester.getInstance().put("api/projects/" + project.get("id"), project, {headers: {"Content-Type": "multipart/form-data"}})
+            .then(response => {
+                console.log("update project");
+                console.log(response);
+                dispatch({type: SET_SELECTED_PROJECT, project: response.data});
+            })
+            .catch(reason => {
+                console.log("failed at updating project");
+                dispatch({type: CREATE_PROJECT_ERROR, reason: reason.response.data});
+            })
+    },
     createProject: (project: FormData): AppThunkAction<KnownAction> => (dispatch, getState) => {
         Requester.getInstance().postForm("api/projects", project)
             .then(response => {

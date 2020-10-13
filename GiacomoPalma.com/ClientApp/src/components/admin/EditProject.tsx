@@ -1,6 +1,6 @@
 ﻿import * as React from "react";
 import * as ProjectsStore from "../../store/Projects";
-import {ChangeEvent} from "react";
+import {ChangeEvent, FormEvent} from "react";
 import {ApplicationState} from "../../store";
 import {connect} from "react-redux";
 import {RouteComponentProps} from "react-router";
@@ -40,8 +40,18 @@ class EditProject extends React.Component<EditProjectProps, EditProjectState>{
         }
     }
 
-    public onUpdateProject = () => {
+    public onUpdateProject = (e: FormEvent) => {
         console.log(this.state);
+        e.preventDefault();
+        let formData = new FormData();
+        formData.set("name", this.state.name);
+        formData.set("description", this.state.description);
+        formData.set("url", this.state.url);
+        if (this.state.file) {
+            formData.set("thumbnail", this.state.file, this.state.file.name);
+        }
+
+        this.props.createProject(formData);
     }
     
     public onInputChange = (e:ChangeEvent) => {
@@ -94,7 +104,7 @@ class EditProject extends React.Component<EditProjectProps, EditProjectState>{
                         {this.props.hasError ? this.props.error : ""}
                     </div>
                     <div className="success-message">
-                        {this.props.selectedProject != undefined ? "Project created successfully!" : ""}
+                        {this.props.selectedProject != undefined ? "Project updated successfully!" : ""}
                     </div>
                     <button type="submit" className="btn btn-primary">Save</button>
                 </form>

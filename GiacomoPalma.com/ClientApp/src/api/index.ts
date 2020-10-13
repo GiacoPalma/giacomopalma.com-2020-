@@ -34,4 +34,9 @@ export default class Requester {
     {
         return axios.post(url, data, {headers: {"Content-Type": "multipart/form-data"}});
     }
+    
+    public put(url: string, data: FormData, options: AxiosRequestConfig): Promise<AxiosResponse<any>>
+    {
+        return axios.put(url, data, options);
+    }
 }

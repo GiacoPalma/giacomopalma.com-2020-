@@ -9,6 +9,6 @@ namespace GiacomoPalma.com.Models
 		public int TagId { get; set; }
 		[Required]
 		public string Name { get; set; }
-		public List<BlogPostTag> BlogPostTags { get; set; } = new List<BlogPostTag>();
+		public List<ResumePostTag> ResumePostTags { get; set; } = new List<ResumePostTag>();
 	}
 }

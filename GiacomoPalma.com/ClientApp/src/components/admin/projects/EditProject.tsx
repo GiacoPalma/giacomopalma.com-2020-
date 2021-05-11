@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
-import * as ProjectsStore from "../../store/Projects";
+import * as ProjectsStore from "../../../store/Projects";
 import {ChangeEvent, FormEvent} from "react";
-import {ApplicationState} from "../../store";
+import {ApplicationState} from "../../../store";
 import {connect} from "react-redux";
 import {RouteComponentProps} from "react-router";
 

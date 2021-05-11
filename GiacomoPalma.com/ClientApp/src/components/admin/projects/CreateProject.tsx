@@ -1,9 +1,9 @@
 ﻿import * as React from "react";
-import * as ProjectStore from "../../store/Projects";
+import * as ProjectStore from "../../../store/Projects";
 import {RouteComponentProps} from "react-router";
 import {ChangeEvent, FormEvent} from "react";
 import {connect} from "react-redux";
-import {ApplicationState} from "../../store";
+import {ApplicationState} from "../../../store";
 import './CreateProject.css';
 
 type CreateProjectProps =

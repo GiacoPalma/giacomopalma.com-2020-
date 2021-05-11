@@ -2,12 +2,12 @@
 
 namespace GiacomoPalma.com.Models
 {
-	public class BlogPostTag
+	public class ResumePostTag
 	{
 		public int Id { get; set; }
 		[Required]
-		public int BlogPostId { get; set; }
-		public BlogPost BlogPost { get; set; }
+		public int ResumePostId { get; set; }
+		public ResumePost ResumePost { get; set; }
 		[Required]
 		public int TagId { get; set; }
 		public Tag Tag { get; set; }

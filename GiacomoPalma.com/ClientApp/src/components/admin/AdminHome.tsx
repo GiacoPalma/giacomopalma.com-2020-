@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 import * as AuthorizationStore from "../../store/Authorization";
 import {Route, RouteComponentProps} from "react-router";
 import {ApplicationState} from "../../store";
-import AdminPosts from "./AdminPosts";
-import AdminProjects from "./AdminProjects";
+import AdminPosts from "./posts/AdminPosts";
+import AdminProjects from "./projects/AdminProjects";
 import AdminMenu from "./AdminMenu";
 
 type AdminHomeProps =

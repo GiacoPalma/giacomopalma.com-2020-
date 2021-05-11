@@ -1,10 +1,9 @@
 ﻿import * as React from "react";
-import * as ProjectStore from "../../store/Projects";
+import * as ProjectStore from "../../../store/Projects";
 import {RouteComponentProps} from "react-router";
 import {connect} from "react-redux";
-import {ApplicationState} from "../../store";
+import {ApplicationState} from "../../../store";
 import './ProjectList.css';
-import EditProject from "./EditProject";
 import {NavLink} from "reactstrap";
 import {Link} from "react-router-dom";
 
@@ -33,7 +32,7 @@ class ProjectList extends React.Component<ProjectListProps, ProjectListState> {
             <ul className="project-list-admin">
                 {this.props.projects.map((project: ProjectStore.Project) =>
                     <li key={project.id} className="project-item-admin-li">
-                        <NavLink className="project-item-admin" tag={Link} to={`${this.props.match.url}get/${project.id}`}>
+                        <NavLink className="project-item-admin" tag={Link} to={`${this.props.match.url}/get/${project.id}`}>
                             <div className="project-thumbnail"><img src={process.env.PUBLIC_URL + project.thumbnail}/>
                             </div>
                             <div className="project-name">{project.name}</div>
